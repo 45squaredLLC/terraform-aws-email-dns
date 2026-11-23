@@ -15,7 +15,7 @@ provider "aws" {
 }
 
 module "email_dns" {
-  # From the Terraform Registry: source = "45squaredLLC/email-dns/aws", version = "~> 1.0"
+  # From GitHub: source = "github.com/45squaredLLC/terraform-aws-email-dns?ref=v1.0.0"
   source = "../.."
 
   domain         = var.domain
