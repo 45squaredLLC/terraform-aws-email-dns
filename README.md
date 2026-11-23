@@ -11,8 +11,6 @@ dig +short TXT _dmarc.email-dns-demo.45squared.com
 dig +short TXT google._domainkey.email-dns-demo.45squared.com
 ```
 
-**Terraform Registry:** [45squaredLLC/email-dns/aws](https://registry.terraform.io/modules/45squaredLLC/email-dns/aws)
-
 ## Why email lands in spam
 
 Anyone can put your address in the From line of an email. So Gmail, Outlook and every other mail service check the sender's domain for three DNS records before they trust a message. When those records are missing or wrong, your invoices, quotes and replies to customers go to spam or bounce, and nothing tells you it happened.
@@ -52,8 +50,7 @@ provider "aws" {
 }
 
 module "email_dns" {
-  source  = "45squaredLLC/email-dns/aws"
-  version = "~> 1.0"
+  source = "github.com/45squaredLLC/terraform-aws-email-dns?ref=v1.0.0"
 
   domain         = "example.com"
   email_provider = "google_workspace"
@@ -78,8 +75,7 @@ Google's own steps: [Set up MX records](https://knowledge.workspace.google.com/a
 
 ```hcl
 module "email_dns" {
-  source  = "45squaredLLC/email-dns/aws"
-  version = "~> 1.0"
+  source = "github.com/45squaredLLC/terraform-aws-email-dns?ref=v1.0.0"
 
   domain           = "example.com"
   email_provider   = "microsoft_365"
